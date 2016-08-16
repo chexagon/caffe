@@ -101,7 +101,10 @@ void GlobalInit(int* pargc, char*** pargv);
 // caffe is going to use for cublas, curand, etc.
 class Caffe {
  public:
+  Caffe();
   ~Caffe();
+
+  static void Set(Caffe* ctx);
 
   // Thread local context for Caffe. Moved to common.cpp instead of
   // including boost/thread.hpp to avoid a boost/NVCC issues (#1009, #1010)
@@ -176,8 +179,6 @@ class Caffe {
   bool root_solver_;
 
  private:
-  // The private constructor to avoid duplicate instantiation.
-  Caffe();
 
   DISABLE_COPY_AND_ASSIGN(Caffe);
 };
