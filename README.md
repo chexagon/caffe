@@ -5,6 +5,11 @@ This is our fork to use [Caffe deep learning framework](https://caffe.berkeleyvi
 ## Known uses 
 
 * [Image API](https://github.com/chexagon/imageapi)
+* [CH Java Caffe](https://github.com/chexagon/ch-java-caffe)
+
+## Java support
+
+There's java support to talk to Caffe on [CH Java Caffe](https://github.com/chexagon/ch-java-caffe)
 
 ### Compiling
 
