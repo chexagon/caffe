@@ -52,36 +52,29 @@ sudo DEBIAN_FRONTEND=noninteractive apt install -y \
 ```
 # create caffe make config
 cat > Makefile.config << EOF
-USE_CUDNN := 1
-OPENCV_VERSION := 3
-CUDA_DIR := /usr/local/cuda
+    USE_CUDNN := 1
+    OPENCV_VERSION := 4
+    CUDA_DIR := /usr/local/cuda
+    CUDA_ARCH :=    -arch=all-major
+    BLAS := open
 
-CUDA_ARCH :=    -gencode arch=compute_80,code=sm_80 \\
-                -gencode arch=compute_86,code=sm_86 \\
-     	        -gencode arch=compute_87,code=sm_87 \\
-                -gencode arch=compute_89,code=sm_89 \\
-                -gencode arch=compute_90,code=sm_90 \\
-                -gencode arch=compute_100,code=sm_100
-             
-BLAS := open
-WITH_PYTHON_LAYER := 0
+    INCLUDE_DIRS := /usr/local/include \\
+                    /usr/include/opencv4 \\
+                    /usr/include/hdf5/serial  \\
+                    /usr/lib/jvm/java-1.8.0-amazon-corretto/include \\
+                    /usr/lib/jvm/java-1.8.0-amazon-corretto/include/linux
 
-INCLUDE_DIRS :=     /usr/local/include /usr/include/opencv4 \\
-                    /usr/include/hdf5/serial
-
-LIBRARY_DIRS :=     /usr/local/lib \\
+    LIBRARY_DIRS := /usr/local/lib \\
                     /usr/lib \\
                     /usr/lib/x86_64-linux-gnu \\
                     /usr/lib/x86_64-linux-gnu/hdf5/serial
-                    
-BUILD_DIR := build
-DISTRIBUTE_DIR := distribute
-TEST_GPUID := 0
-Q ?= @
+                        
+    BUILD_DIR := build
+    Q ?= @
 EOF
 
 make lib
 
 # show compiled files
-ls .build_release/lib/
+ls build/lib/
 ```
