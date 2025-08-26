@@ -52,10 +52,11 @@ sudo DEBIAN_FRONTEND=noninteractive apt install -y \
 ```
 # create caffe make config
 cat > Makefile.config << EOF
-    USE_CUDNN := 1
+    USE_CUDNN := 0
     OPENCV_VERSION := 4
     CUDA_DIR := /usr/local/cuda
-    CUDA_ARCH :=    -gencode arch=compute_80,code=sm_80 \\
+    CUDA_ARCH :=    -gencode arch=compute_75,code=sm_75 \\
+                    -gencode arch=compute_80,code=sm_80 \\
                     -gencode arch=compute_86,code=sm_86 \\
                     -gencode arch=compute_87,code=sm_87 \\
                     -gencode arch=compute_89,code=sm_89 \\
