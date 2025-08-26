@@ -55,7 +55,25 @@ cat > Makefile.config << EOF
     USE_CUDNN := 1
     OPENCV_VERSION := 4
     CUDA_DIR := /usr/local/cuda
-    CUDA_ARCH :=    -arch=all-major
+    CUDA_ARCH :=    -gencode arch=compute_30,code=sm_30 \\
+                    -gencode arch=compute_35,code=sm_35 \\
+                    -gencode arch=compute_37,code=sm_37 \\
+                    -gencode arch=compute_50,code=sm_50 \\
+                    -gencode arch=compute_52,code=sm_52 \\
+                    -gencode arch=compute_53,code=sm_53 \\
+                    -gencode arch=compute_61,code=sm_61 \\
+                    -gencode arch=compute_62,code=sm_62 \\
+                    -gencode arch=compute_63,code=sm_63 \\
+                    -gencode arch=compute_70,code=sm_70 \\
+                    -gencode arch=compute_72,code=sm_72 \\
+                    -gencode arch=compute_75,code=sm_75 \\
+                    -gencode arch=compute_80,code=sm_80 \\
+                    -gencode arch=compute_80,code=sm_80 \\
+                    -gencode arch=compute_86,code=sm_86 \\
+    	               -gencode arch=compute_87,code=sm_87 \\
+                    -gencode arch=compute_89,code=sm_89 \\
+                    -gencode arch=compute_90,code=sm_90 \\
+                    -gencode arch=compute_100,code=sm_100 
     BLAS := open
 
     INCLUDE_DIRS := /usr/local/include \\
